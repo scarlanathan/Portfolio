@@ -17,14 +17,10 @@ Portfolio personnel responsive présentant mon parcours, mes expériences et mes
 
 👉 **[Voir le portfolio en ligne](https://nathanhan.netlify.app/)**
 
-> ⚠️ Remplace `VOTRE-LIEN.netlify.app` par ton URL réelle une fois le site déployé (voir [Déploiement](#-déploiement)).
 
 ## 📸 Aperçu
 
-<!-- Ajoute une capture d'écran : place une image dans le repo (ex: image/preview.png) puis décommente la ligne ci-dessous -->
-<!-- ![Aperçu du portfolio](image/preview.png) -->
-
-*Capture d'écran à venir.*
+![Aperçu du portfolio](image/preview.png)
 
 ## ✨ Fonctionnalités
 
@@ -98,7 +94,6 @@ Portfolio/
 ## 📫 Contact
 
 - **GitHub** — [@scarlanathan](https://github.com/scarlanathan)
-- **Email** — houzeyu7@gmail.com
 
 ---
 

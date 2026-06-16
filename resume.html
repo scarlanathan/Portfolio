@@ -1,59 +1,399 @@
-/* =========================================================
-   Nathan HAN — Portfolio interactions
-   - Scroll-triggered reveals (animations start only when
-     the element enters the viewport)
-   - Sticky nav state + mobile menu
-   ========================================================= */
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nathan HAN — Data Scientist & ML / NLP Engineer. Alternance Safran Landing Systems : LLM, RAG, MLOps.">
+    <link rel="icon" type="image/png" href="nh1.png">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Nathan HAN — Data & IA</title>
+</head>
+<body>
 
-document.addEventListener('DOMContentLoaded', () => {
+<!-- ===================== NAV ===================== -->
+<nav class="nav" id="nav">
+    <a href="#home" class="nav__logo">Nathan <span>HAN</span></a>
+    <ul class="nav__links" id="navLinks">
+        <li><a href="#about">Contact</a></li>
+        <li><a href="#education">Formation</a></li>
+        <li><a href="#experience">Expérience</a></li>
+        <li><a href="#project">Projet</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#interests">Intérêts</a></li>
+    </ul>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu"><span></span></button>
+</nav>
 
-    const revealEls = document.querySelectorAll('.reveal, .timeline');
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="home">
+    <div class="hero__inner">
+        <p class="hero__greeting">Bonjour! Je suis</p>
+        <h1>Nathan Han</h1>
+        <p class="hero__role"><b>Data Scientist</b> &amp; <b>ML / AI Engineer</b><br>LLM · RAG · MLOps</p>
+        <div class="hero__cta">
+            <a href="#experience" class="btn btn--primary">Voir mon expérience</a>
+            <a href="#about" class="btn btn--ghost">Me contacter</a>
+        </div>
+    </div>
+    <a href="#about" class="hero__scroll" aria-label="Défiler"></a>
+</header>
 
-    /* ---- Sticky nav background on scroll ---- */
-    const nav = document.querySelector('.nav');
-    if (nav) {
-        const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
-        onScroll();
-        window.addEventListener('scroll', onScroll, { passive: true });
-    }
+<main>
 
-    /* ---- Mobile menu toggle ---- */
-    const toggle = document.querySelector('.nav__toggle');
-    const links  = document.querySelector('.nav__links');
-    if (toggle && links) {
-        const closeMenu = () => {
-            toggle.classList.remove('open');
-            links.classList.remove('open');
-        };
-        toggle.addEventListener('click', () => {
-            toggle.classList.toggle('open');
-            links.classList.toggle('open');
-        });
-        links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-    }
+<!-- ===================== ABOUT / CONTACT ===================== -->
+<section class="section" id="about">
+    <div class="container about__grid reveal">
+        <div class="about__photo">
+            <img src="cv_nathan_han.jpg" alt="Nathan Han">
+        </div>
+        <div class="about__text">
+            <span class="eyebrow">À propos</span>
+            <h2 class="section-title">Enchanté&nbsp;!</h2>
+            <p>Je suis <b>Nathan Han</b>, ingénieur Data &amp; IA, spécialisé dans la mise en
+               production de solutions <b>NLP / LLM</b> en contexte industriel.</p>
+            <p>J'ai passé trois ans en alternance chez <b>Safran Landing Systems</b>, où j'ai conçu
+               et déployé des applications full-stack pilotées par l'IA (LLM, RAG, MLOps).</p>
+            <p>Merci de votre visite — n'hésitez pas à me contacter.</p>
+            <div class="socials">
+                <a class="social-btn" href="https://github.com/scarlanathan" target="_blank" rel="noopener">
+                    <img src="github.png" alt=""> GitHub
+                </a>
+                <a class="social-btn" href="https://www.linkedin.com/in/nat-han/" target="_blank" rel="noopener">
+                    <img src="linkedin.png" alt=""> LinkedIn
+                </a>
+                <a class="social-btn" href="mailto:nathan.han@epitech.eu">
+                    <img src="icons8-email-64.png" alt=""> Email
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-    /* ---- Scroll reveal: fire animation only when in view ----
-       Fall back to showing everything if IntersectionObserver is
-       unavailable or the user prefers reduced motion. */
-    const reduceMotion = window.matchMedia &&
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+<!-- ===================== EDUCATION ===================== -->
+<section class="section section--alt" id="education">
+    <div class="container">
+        <div class="reveal" style="text-align:center;">
+            <span class="eyebrow">Parcours</span>
+            <h2 class="section-title">Formation</h2>
+            <p class="section-lead" style="margin-left:auto;margin-right:auto;">
+                De la médecine aux sciences des données — un parcours qui m'a appris à apprendre vite.
+            </p>
+        </div>
 
-    if (!('IntersectionObserver' in window) || reduceMotion) {
-        revealEls.forEach(el => el.classList.add('in-view'));
-        return;
-    }
+        <div class="timeline" id="timeline">
+            <div class="tl-item">
+                <span class="tl-dot"></span>
+                <div class="tl-card">
+                    <img class="tl-logo" src="image/formation/lycees.png" alt="">
+                    <span class="tl-date">2014 – 2017</span>
+                    <h3>Lycée Montaigne — Paris</h3>
+                    <p>Baccalauréat Scientifique SVT, spécialité Mathématiques.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <span class="tl-dot"></span>
+                <div class="tl-card">
+                    <img class="tl-logo" src="image/formation/symbole.png" alt="">
+                    <span class="tl-date">2017 – 2018</span>
+                    <h3>Université Pierre &amp; Marie Curie — Paris</h3>
+                    <p>Première année de médecine (PACES).</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <span class="tl-dot"></span>
+                <div class="tl-card">
+                    <img class="tl-logo" src="image/formation/su.png" alt="">
+                    <span class="tl-date">2018 – 2022</span>
+                    <h3>Sorbonne Université — Paris</h3>
+                    <p>Licence Mécanique &amp; Informatique.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <span class="tl-dot"></span>
+                <div class="tl-card">
+                    <img class="tl-logo" src="image/formation/epitech.png" alt="">
+                    <span class="tl-date">2023 – 2026</span>
+                    <h3>Epitech — Paris</h3>
+                    <p>Master spécialité Big Data &amp; Intelligence Artificielle.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                obs.unobserve(entry.target);   // animate once
-            }
-        });
-    }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -10% 0px'
-    });
+<!-- ===================== EXPERIENCE ===================== -->
+<section class="section" id="experience">
+    <div class="container">
+        <div class="reveal">
+            <span class="eyebrow">Expérience</span>
+            <div class="exp-head">
+                <h3>Safran Landing Systems</h3>
+                <span class="exp-period">Alternance Data / IA · 2023 – 2026</span>
+            </div>
+            <p class="exp-context">
+                Au sein de l'équipe Digital Quality, j'ai mené en parallèle <b>quatre applications IA</b>
+                en production et <b>quatre missions transverses</b>. Chaque projet répond à un besoin métier réel
+                de la qualité aéronautique, avec une logique de <b>frugalité IA</b> : déterministe quand c'est possible,
+                LLM seulement quand c'est nécessaire.
+            </p>
+        </div>
 
-    revealEls.forEach(el => observer.observe(el));
-});
+        <!-- Projects -->
+        <div class="projects">
+            <article class="proj-card reveal">
+                <div class="proj-card__top">
+                    <h4>Q-Checker</h4>
+                    <span class="proj-tag">Django · Vue 3</span>
+                </div>
+                <p class="proj-desc">
+                    Audit automatisé de dossiers PDF techniques sur 7 critères de conformité réglementaire.
+                    Pipeline d'extraction multi-bibliothèque ; 5 critères 100 % déterministes, 2 critères de
+                    signature délégués à une vision LLM (Claude Haiku 4.5). Restitution en temps réel via SSE.
+                </p>
+                <div class="proj-metrics">
+                    <div><div class="num">−93 %</div><div class="lbl">temps de relecture</div></div>
+                    <div><div class="num">&gt;99 %</div><div class="lbl">détection d'anomalies</div></div>
+                </div>
+                <div class="tags">
+                    <span>PyMuPDF</span><span>pdfplumber</span><span>Vision LLM</span>
+                    <span>SSE</span><span>OpenShift</span>
+                </div>
+            </article>
+
+            <article class="proj-card reveal">
+                <div class="proj-card__top">
+                    <h4>AMDEC</h4>
+                    <span class="proj-tag">FastAPI · Vue 3</span>
+                </div>
+                <p class="proj-desc">
+                    Assistant de résolution de non-conformités sur une base de connaissances de 290 cas.
+                    Recherche hybride RAG : similarité vectorielle FAISS + scoring métadonnées pondéré.
+                    Refactor complet d'un backend legacy vers une architecture FastAPI propre (lifespan, Pydantic v2).
+                </p>
+                <div class="proj-metrics">
+                    <div><div class="num">290</div><div class="lbl">cas indexés</div></div>
+                    <div><div class="num">768D</div><div class="lbl">embeddings e5</div></div>
+                </div>
+                <div class="tags">
+                    <span>FAISS</span><span>sentence-transformers</span><span>RAG hybride</span>
+                    <span>Pydantic v2</span><span>OpenShift</span>
+                </div>
+            </article>
+
+            <article class="proj-card reveal">
+                <div class="proj-card__top">
+                    <h4>CASQIT Chatbot</h4>
+                    <span class="proj-tag">Flask · RAG</span>
+                </div>
+                <p class="proj-desc">
+                    Assistant conversationnel documentaire multilingue (FR/EN) sur ~1 000 pages de procédures.
+                    Retrieval BGE-M3 (1024D) + FAISS, génération Claude Sonnet 4, et citations sourcées avec
+                    images PDF cliquables pour vérifier chaque réponse.
+                </p>
+                <div class="proj-metrics">
+                    <div><div class="num">FR · EN</div><div class="lbl">multilingue natif</div></div>
+                    <div><div class="num">1024D</div><div class="lbl">BGE-M3 local</div></div>
+                </div>
+                <div class="tags">
+                    <span>BGE-M3</span><span>FAISS</span><span>Sessions multi-tours</span>
+                    <span>Citations sourcées</span>
+                </div>
+            </article>
+
+            <article class="proj-card reveal">
+                <div class="proj-card__top">
+                    <h4>NC Charac</h4>
+                    <span class="proj-tag">Flask · Vue 3 · AWS</span>
+                </div>
+                <p class="proj-desc">
+                    Notation IA de rapports de non-conformités sur 4 critères qualité, avec observations
+                    détaillées et réécriture guidée. Pipeline LLM en deux temps avec garde-fou
+                    (<code>is_safe</code>), boucle de feedback utilisateur, déployé sur AWS ECS / Fargate.
+                </p>
+                <div class="proj-metrics">
+                    <div><div class="num">4</div><div class="lbl">critères notés /5</div></div>
+                    <div><div class="num">IaC</div><div class="lbl">Terraform · ECS</div></div>
+                </div>
+                <div class="tags">
+                    <span>Guardrail LLM</span><span>JSONL thread-safe</span><span>Terraform</span>
+                    <span>ECS / Fargate</span><span>SonarQube</span>
+                </div>
+            </article>
+        </div>
+
+        <!-- Missions -->
+        <div class="missions reveal">
+            <h3>Missions transverses</h3>
+            <div class="mission-grid">
+                <div class="mission">
+                    <span class="m-num">01</span>
+                    <h5>Développement technique</h5>
+                    <p>Conception full-stack (Django, Flask, FastAPI, Vue 3), intégration des API LLM
+                       et pipelines d'ingestion documentaire, le tout conteneurisé.</p>
+                </div>
+                <div class="mission">
+                    <span class="m-num">02</span>
+                    <h5>Interface métier / technique</h5>
+                    <p>Immersion terrain et traduction des besoins qualité en exigences techniques :
+                       reformulation, arbitrage coût / valeur, plaidoyer pour l'usage réel.</p>
+                </div>
+                <div class="mission">
+                    <span class="m-num">03</span>
+                    <h5>Conduite du changement</h5>
+                    <p>~30 % du temps. Pilotage de deux migrations applicatives en double-run, ateliers
+                       de formation et traitement de la résistance au changement source par source.</p>
+                </div>
+                <div class="mission">
+                    <span class="m-num">04</span>
+                    <h5>Animation &amp; RETEX</h5>
+                    <p>Séances utilisateurs et RETEX structurés transformés en backlog produit priorisé :
+                       verbatim → irritant → ticket → branche GitLab → merge request.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== PROJECT ===================== -->
+<section class="section section--alt" id="project">
+    <div class="container">
+        <div class="reveal" style="text-align:center;">
+            <span class="eyebrow">Projet de fin d'études</span>
+            <h2 class="section-title">Whispr</h2>
+        </div>
+        <div class="feature reveal">
+            <div>
+                <h3 class="feature__title">Messagerie sécurisée</h3>
+                <p class="feature__sub">Chiffrement des échanges &amp; modération on-device</p>
+                <ul>
+                    <li>Conception d'une application de messagerie sécurisée avec chiffrement des échanges.</li>
+                    <li>Système de modération des contenus multimédia exécuté <b>uniquement côté client</b>,
+                        pour préserver la confidentialité.</li>
+                    <li>Fine-tuning et déploiement d'un <b>modèle de vision</b> pour la détection des
+                        contenus sensibles.</li>
+                    <li>Optimisation des performances pour l'<b>inférence on-device</b> :
+                        latence et consommation mémoire.</li>
+                </ul>
+                <div class="tags">
+                    <span>Chiffrement E2E</span><span>Computer Vision</span><span>Fine-tuning</span>
+                    <span>On-device ML</span><span>Optimisation inférence</span>
+                </div>
+            </div>
+            <div class="feature__visual"><span class="lock">🔐</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== EXPERTISE ===================== -->
+<section class="section" id="expertise">
+    <div class="container">
+        <div class="reveal">
+            <span class="eyebrow">Compétences</span>
+            <h2 class="section-title">Expertise</h2>
+            <p class="section-lead">Data &amp; Programmation, du prétraitement à la mise en production.</p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card reveal">
+                <div class="skill-card__icon">🗣️</div>
+                <h4>NLP &amp; IA conversationnelle</h4>
+                <div class="tags">
+                    <span>OCR</span><span>RAG</span><span>Prise en charge LLM</span>
+                    <span>Traitement de colonnes texte de qualités diverses</span>
+                </div>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-card__icon">📊</div>
+                <h4>Science des données</h4>
+                <div class="tags">
+                    <span>Python</span><span>Pandas</span><span>Scikit-learn</span>
+                    <span>Prétraitement</span><span>Feature Engineering</span>
+                    <span>Évaluation des performances modèle</span>
+                </div>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-card__icon">⚙️</div>
+                <h4>MLOps &amp; ingénierie ML</h4>
+                <div class="tags">
+                    <span>PyTorch / TensorFlow</span><span>Docker</span><span>Pipelines CI/CD</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal">
+            <span class="eyebrow">Langues</span>
+            <div class="languages" style="margin-top:18px;">
+                <div class="lang">
+                    <div class="l-name">Français <small>Langue maternelle</small></div>
+                    <span class="l-level">Natif</span>
+                </div>
+                <div class="lang">
+                    <div class="l-name">Anglais <small>Courant</small></div>
+                    <span class="l-level">C1</span>
+                </div>
+                <div class="lang">
+                    <div class="l-name">Mandarin <small>HSK 3</small></div>
+                    <span class="l-level">B1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== INTERESTS ===================== -->
+<section class="section section--alt" id="interests">
+    <div class="container">
+        <div class="reveal">
+            <span class="eyebrow">À côté du code</span>
+            <h2 class="section-title">Centres d'intérêt</h2>
+        </div>
+        <div class="interests-grid">
+            <div class="interest-card reveal">
+                <div class="i-emoji">🏸</div>
+                <h4>Sport</h4>
+                <p>Badminton depuis 15 ans, basketball depuis 11 ans. <span class="highlight">Vainqueur
+                   de l'Association Sportive</span>, niveau départemental junior (2 années consécutives)
+                   et club D1 junior (2016-2017).</p>
+                <div class="chips"><span>Badminton</span><span>Basketball</span><span>Esprit d'équipe</span></div>
+            </div>
+            <div class="interest-card reveal">
+                <div class="i-emoji">♟️</div>
+                <h4>Échecs &amp; stratégie</h4>
+                <p>Joueur d'échecs — <span class="highlight">Elo 2200 en résolution de problèmes</span>.
+                   La rigueur, l'anticipation et la lecture de patterns que j'y cultive se retrouvent
+                   directement dans mon approche de la data.</p>
+                <div class="chips"><span>Échecs</span><span>Jeux vidéo</span><span>Cinéma</span></div>
+            </div>
+            <div class="interest-card reveal">
+                <div class="i-emoji">🎨</div>
+                <h4>Arts</h4>
+                <p>Dessin de sculpture, peinture et manga. Un terrain d'expression visuelle qui nourrit
+                   mon sens du détail et mon souci de l'esthétique, y compris dans les interfaces que je conçois.</p>
+                <div class="chips"><span>Dessin</span><span>Peinture</span><span>Manga</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+    <div class="socials">
+        <a class="social-btn" href="https://github.com/scarlanathan" target="_blank" rel="noopener">
+            <img src="github.png" alt=""> GitHub
+        </a>
+        <a class="social-btn" href="https://www.linkedin.com/in/nat-han/" target="_blank" rel="noopener">
+            <img src="linkedin.png" alt=""> LinkedIn
+        </a>
+        <a class="social-btn" href="mailto:nathan.han@epitech.eu">
+            <img src="icons8-email-64.png" alt=""> Email
+        </a>
+    </div>
+    <p>© 2026 Nathan Han — Data Scientist &amp; ML / AI Engineer</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
